@@ -1,0 +1,17 @@
+{
+  "name": "Soumya Suryawanshi Portfolio",
+  "short_name": "Soumya.dev",
+  "description": "Portfolio of Soumya Suryawanshi — Software Engineer, Flutter & Firebase developer, AI/ML practitioner.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060e09",
+  "theme_color": "#060e09",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
