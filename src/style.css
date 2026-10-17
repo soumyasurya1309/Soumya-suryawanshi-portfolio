@@ -1782,29 +1782,44 @@ strong { font-weight: 600; color: var(--c-text); }
   .nav-resume-btn { display: none; }
   .nav-hamburger { display: flex; }
 
-  /* Hero — strengthen overlay so text reads over full-width image on mobile */
+  /* Hero — portrait-at-top / content-at-bottom editorial layout on mobile.
+     background-position 80% top: shifts image right so face appears at top
+     rather than showing the torso (center center default).              */
+  .section-hero {
+    background-position: 80% top;
+    align-items: flex-end;  /* push text content to bottom */
+  }
   .hero-gradient-overlay {
     background:
-      linear-gradient(100deg,
-        rgba(6, 14, 9, 0.93) 0%,
-        rgba(6, 14, 9, 0.88) 35%,
-        rgba(6, 14, 9, 0.70) 60%,
-        rgba(6, 14, 9, 0.40) 85%
+      /* Strong dark curtain rising from bottom — text always readable */
+      linear-gradient(to top,
+        rgba(6, 14, 9, 0.98) 0%,
+        rgba(6, 14, 9, 0.94) 18%,
+        rgba(6, 14, 9, 0.75) 38%,
+        rgba(6, 14, 9, 0.25) 60%,
+        rgba(6, 14, 9, 0.00) 78%
       ),
+      /* Left strip so text has depth against portrait edge */
+      linear-gradient(to right,
+        rgba(6, 14, 9, 0.60) 0%,
+        rgba(6, 14, 9, 0.15) 50%,
+        rgba(6, 14, 9, 0.00) 100%
+      ),
+      /* Nav bar coverage at top */
       linear-gradient(to bottom,
-        rgba(6, 14, 9, 0.50) 0%,
-        transparent 20%,
-        transparent 70%,
-        rgba(6, 14, 9, 0.80) 100%
+        rgba(6, 14, 9, 0.55) 0%,
+        rgba(6, 14, 9, 0.00) 10%
       );
   }
+  .hero-scroll-label { display: none; }  /* reclaim vertical space */
   .hero-content {
-    padding: calc(var(--nav-h) + 2.5rem) var(--container-pad) 5rem;
+    padding: 2rem var(--container-pad) clamp(2.5rem, 7vh, 4rem);
     max-width: 100%;
+    width: 100%;
   }
   .hero-ctas { gap: 0.625rem; }
   .btn { padding: 0.7rem 1.25rem; font-size: 0.85rem; }
-  .hero-badges { gap: 1.5rem; }
+  .hero-badges { gap: 1.25rem 2rem; }
 
   /* About */
   .about-grid { grid-template-columns: 1fr; }
@@ -1843,6 +1858,9 @@ strong { font-weight: 600; color: var(--c-text); }
 @media (max-width: 480px) {
   :root { --nav-h: 56px; }
 
+  /* Shift image further right on smaller phones — face stays centred */
+  .section-hero { background-position: 85% top; }
+
   .section-title { font-size: clamp(1.75rem, 8vw, 2.5rem); }
   .project-title { font-size: clamp(1.35rem, 6vw, 2rem); }
   .cert-grid { grid-template-columns: 1fr; }
@@ -1866,6 +1884,9 @@ strong { font-weight: 600; color: var(--c-text); }
     --nav-h: 52px;
     --container-pad: clamp(0.875rem, 4vw, 1.25rem);
   }
+
+  /* Maximum right-shift so face is fully visible on narrow phones */
+  .section-hero { background-position: 90% top; }
 
   .nav-logo-text { display: none; }
   .hero-name { font-size: clamp(2rem, 13vw, 2.75rem); }
